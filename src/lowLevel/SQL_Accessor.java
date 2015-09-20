@@ -125,17 +125,17 @@ public class SQL_Accessor {
         return list;
     }
 
-    public void createRecord(String tableName, List<String> columns, List<String> values) throws ClassNotFoundException, SQLException {
+    public void createRecord(String tableName, List<Object> columns, List<Object> values) throws ClassNotFoundException, SQLException {
 
         StringBuilder sb = new StringBuilder("INSERT INTO " + tableName + " (");
         try{
             openDatabaseConnection();
-        for (String col : columns) {
+        for (Object col : columns) {
             sb.append(col).append(",");
         }
         sb = sb.deleteCharAt(sb.length() - 1);
         sb.append(") VALUES (");
-        for (String val : values) {
+        for (Object val : values) {
             sb.append("?,");
         }
         sb = sb.deleteCharAt(sb.length() - 1);

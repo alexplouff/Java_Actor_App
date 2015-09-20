@@ -55,22 +55,5 @@ public class ActorService {
         return dao.getRecordByID(id);
     }
     
-    public static void main(String[] args) throws Exception{
-        ActorService actor_service = new ActorService(new Actor_SQL_DAO( new SQL_Accessor("com.mysql.jdbc.Driver", "jdbc:mysql://localhost:3306/Client?zeroDateTimeBehavior=convertToNull",
-                                "root","root")));
-        System.out.println(actor_service.getAllActors());
-        
-        System.out.println(actor_service.getActorByID("3"));
-        
-        actor_service.createActorRecord(new Actor("Ethan", "Eubank"));
-        actor_service.updateActorRecord(new Actor("Joey", "LaForge", 3));
-        System.out.println(actor_service.getAllActors());
-        List deleteList = new ArrayList();
-        deleteList.add(5);
-        deleteList.add(6);
-        actor_service.deleteActorRecords(deleteList);
-        System.out.println(actor_service.getAllActors());
-    }
-    
     
 }

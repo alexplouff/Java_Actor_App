@@ -21,20 +21,18 @@ public class Start {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception {
-                ActorService actor_service = new ActorService(new Actor_SQL_DAO( new SQL_Accessor("com.mysql.jdbc.Driver", "jdbc:mysql://localhost:3306/Client?zeroDateTimeBehavior=convertToNull",
-                                "root","root")));
-        System.out.println(actor_service.getAllActors());
-        
-        System.out.println(actor_service.getActorByID("3"));
-        
-        actor_service.createActorRecord(new Actor("Ethan", "Eubank"));
-        actor_service.updateActorRecord(new Actor("Joey", "LaForge", 3));
-        System.out.println(actor_service.getAllActors());
+        ActorService actor_service = new ActorService(new Actor_SQL_DAO(new SQL_Accessor("com.mysql.jdbc.Driver", "jdbc:mysql://localhost:3306/Client?zeroDateTimeBehavior=convertToNull",
+                "root", "root")));
+
+//      actor_service.createActorRecord(new Actor("Gary", "Eubank"));     //C
+//      System.out.println(actor_service.getAllActors());                 //R
+
+//      System.out.println(actor_service.getActorByID("3"));        **
+//      actor_service.updateActorRecord(new Actor("Guy", "LaForge", 3));  //U
         List deleteList = new ArrayList();
-        deleteList.add(5);
-        deleteList.add(6);
-        actor_service.deleteActorRecords(deleteList);
-        System.out.println(actor_service.getAllActors());
+        deleteList.add(8);
+        deleteList.add(9);
+        actor_service.deleteActorRecords(deleteList);                     //D
     }
-    
+
 }
