@@ -76,10 +76,8 @@ public class SQL_Accessor {
         Class.forName(driverName);       
         conn = DriverManager.getConnection(url, userName, password);
         System.out.println("Connection Is Open");
-        } catch(ClassNotFoundException cnfe){
+        } catch(ClassNotFoundException | SQLException cnfe){
             cnfe.getLocalizedMessage();
-        } catch (SQLException se){
-            se.getLocalizedMessage();
         }
     }
 
@@ -149,10 +147,8 @@ public class SQL_Accessor {
 
         pStmt.executeUpdate();
         }
-        catch(SQLException se){
+        catch(SQLException | ClassNotFoundException se){
             se.getLocalizedMessage();
-        } catch(ClassNotFoundException cnfe){
-            cnfe.getLocalizedMessage();
         }finally{
         closeDatabaseConnection();
         }
@@ -241,7 +237,7 @@ public class SQL_Accessor {
             pstmt.setObject(1, key);
             pstmt.executeUpdate();
         }
-        } catch (Exception se){
+        } catch (IllegalArgumentException | ClassNotFoundException | SQLException se){
             se.getLocalizedMessage();
         } finally{
             pstmt.close();
